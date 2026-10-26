@@ -51,6 +51,7 @@
 
                     <div class="hidden sm:flex items-center gap-4 text-sm text-slate-300">
                         <a href="{{ route('dashboard') }}" class="text-white font-medium px-3 py-1.5 rounded-lg bg-slate-800/80">Ringkasan</a>
+                        <a href="{{ route('reports.index') }}" class="hover:text-white px-3 py-1.5 rounded-lg transition-colors">Layanan Lapor</a>
                         <a href="{{ route('profile.edit') }}" class="hover:text-white px-3 py-1.5 rounded-lg transition-colors">Kelola Profil</a>
                         <a href="{{ route('home') }}" class="hover:text-white px-3 py-1.5 rounded-lg transition-colors">Landing Page</a>
                     </div>
@@ -102,9 +103,14 @@
                     Anda berhasil masuk ke dashboard internal Nova. Dari sini Anda dapat memantau alur kerja, performa server, dan status integrasi.
                 </p>
             </div>
-            <a href="{{ route('home') }}" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 transition-colors shadow-md shadow-indigo-600/30">
-                Lihat Landing Page
-            </a>
+            <div class="flex flex-wrap items-center gap-3">
+                <a href="{{ route('reports.create') }}" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all shadow-md shadow-indigo-600/30">
+                    + Buat Laporan
+                </a>
+                <a href="{{ route('home') }}" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700 transition-colors">
+                    Landing Page
+                </a>
+            </div>
         </div>
 
         <!-- Metric Cards -->

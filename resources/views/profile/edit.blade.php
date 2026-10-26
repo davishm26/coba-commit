@@ -55,6 +55,7 @@
 
                     <div class="hidden sm:flex items-center gap-4 text-sm text-slate-300">
                         <a href="{{ route('dashboard') }}" class="hover:text-white px-3 py-1.5 rounded-lg transition-colors">Ringkasan</a>
+                        <a href="{{ route('reports.index') }}" class="hover:text-white px-3 py-1.5 rounded-lg transition-colors">Layanan Lapor</a>
                         <a href="{{ route('profile.edit') }}" class="text-white font-medium px-3 py-1.5 rounded-lg bg-slate-800/80">Kelola Profil</a>
                         <a href="{{ route('home') }}" class="hover:text-white px-3 py-1.5 rounded-lg transition-colors">Landing Page</a>
                     </div>
