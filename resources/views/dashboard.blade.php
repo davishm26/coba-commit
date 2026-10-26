@@ -51,6 +51,7 @@
 
                     <div class="hidden sm:flex items-center gap-4 text-sm text-slate-300">
                         <a href="{{ route('dashboard') }}" class="text-white font-medium px-3 py-1.5 rounded-lg bg-slate-800/80">Ringkasan</a>
+                        <a href="{{ route('profile.edit') }}" class="hover:text-white px-3 py-1.5 rounded-lg transition-colors">Kelola Profil</a>
                         <a href="{{ route('home') }}" class="hover:text-white px-3 py-1.5 rounded-lg transition-colors">Landing Page</a>
                     </div>
                 </div>
@@ -132,7 +133,13 @@
 
         <!-- User Information Card -->
         <div class="glass-card rounded-2xl p-6 sm:p-8">
-            <h2 class="text-lg font-bold text-white mb-4">Informasi Akun Anda</h2>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-bold text-white">Informasi Akun Anda</h2>
+                <a href="{{ route('profile.edit') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-indigo-300 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 transition-all">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    Edit Profil
+                </a>
+            </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
                 <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800/80">
                     <span class="text-xs text-slate-400 block mb-1">Nama Lengkap</span>
