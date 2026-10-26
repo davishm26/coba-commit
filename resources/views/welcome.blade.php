@@ -72,15 +72,24 @@
 
                 <!-- Action Buttons -->
                 <div class="hidden md:flex items-center gap-4">
-                    <a href="#login" id="btn-login-desktop" class="text-sm font-semibold text-slate-300 hover:text-white px-4 py-2 rounded-lg transition-colors">
-                        Masuk
-                    </a>
-                    <a href="#mulai" id="btn-register-desktop" class="relative group inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white transition-all bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl hover:from-indigo-400 hover:to-purple-500 shadow-md shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5">
-                        <span>Coba Gratis</span>
-                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
+                    @auth
+                        <a href="{{ route('dashboard') }}" id="btn-dashboard-desktop" class="relative group inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white transition-all bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl hover:from-indigo-400 hover:to-purple-500 shadow-md shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5">
+                            <span>Buka Dashboard</span>
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </a>
+                    @else
+                        <a href="{{ route('login') }}" id="btn-login-desktop" class="text-sm font-semibold text-slate-300 hover:text-white px-4 py-2 rounded-lg transition-colors">
+                            Masuk
+                        </a>
+                        <a href="{{ route('login') }}" id="btn-register-desktop" class="relative group inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white transition-all bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl hover:from-indigo-400 hover:to-purple-500 shadow-md shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5">
+                            <span>Coba Gratis</span>
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </a>
+                    @endauth
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -104,8 +113,12 @@
             <a href="#harga" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Harga</a>
             <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">FAQ</a>
             <div class="pt-4 border-t border-slate-800 flex flex-col gap-2">
-                <a href="#login" class="text-center px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300 bg-slate-800 hover:bg-slate-700">Masuk</a>
-                <a href="#mulai" class="text-center px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500">Coba Gratis Sekarang</a>
+                @auth
+                    <a href="{{ route('dashboard') }}" class="text-center px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500">Buka Dashboard</a>
+                @else
+                    <a href="{{ route('login') }}" class="text-center px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300 bg-slate-800 hover:bg-slate-700">Masuk</a>
+                    <a href="{{ route('login') }}" class="text-center px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500">Coba Gratis Sekarang</a>
+                @endauth
             </div>
         </div>
     </header>
@@ -142,8 +155,8 @@
 
             <!-- Call to Action Buttons -->
             <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#mulai" id="hero-cta-primary" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:-translate-y-0.5 transition-all">
-                    Mulai Uji Coba Gratis
+                <a href="{{ auth()->check() ? route('dashboard') : route('login') }}" id="hero-cta-primary" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:-translate-y-0.5 transition-all">
+                    {{ auth()->check() ? 'Buka Dashboard' : 'Mulai Uji Coba Gratis' }}
                 </a>
                 <a href="#demo" id="hero-cta-secondary" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-600 transition-all">
                     <svg class="w-5 h-5 text-indigo-400" fill="currentColor" viewBox="0 0 20 20">
@@ -503,8 +516,8 @@
                         Bergabunglah bersama ribuan developer dan bisnis yang telah menghemat waktu dan meningkatkan efisiensi produk mereka.
                     </p>
                     <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a href="#mulai" id="final-cta" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-semibold text-slate-900 bg-white hover:bg-slate-100 shadow-xl hover:-translate-y-0.5 transition-all">
-                            Mulai Sekarang — Gratis
+                        <a href="{{ auth()->check() ? route('dashboard') : route('login') }}" id="final-cta" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-semibold text-slate-900 bg-white hover:bg-slate-100 shadow-xl hover:-translate-y-0.5 transition-all">
+                            {{ auth()->check() ? 'Buka Dashboard' : 'Mulai Sekarang — Gratis' }}
                         </a>
                         <a href="#kontak" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all">
                             Konsultasi dengan Kami
